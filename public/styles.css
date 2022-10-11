@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    min-height: 100vh;
+}
+
+.solid {
+    margin: 5px 0;
+    border: 0;
+    border-top: 1px solid #CCC;
+}
+.short {
+    margin: 5px 0;
+    border: 1px solid crimson;
+    width: 50px;
+}
+
+.header,
+.footer {
+    background-color: #141414;
+    color: #ccc;
+}
+
+.header {
+    height: min-content;
+}
+.header,
+.player-bar,
+.navbar,
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar-item{
+    font-size: 16px;
+    padding: 0 0 0 20px ;
+}
+.player-bar-img{
+    height: 2em;
+}
+.navbar-search-img{
+    height: 1em;
+}
+.header-website-name{
+    font-size: 30px;
+    color: darkred;
+    font-style: oblique;
+}
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: min-content;
+}
+.footer-top,
+.footer-bottom,
+.language-choose,
+.footer-policy{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+.footer-lang,
+.footer-timezone,
+.footer-policy-item{
+    padding: 2px 8px;
+    font-size: 12px;
+}
+
+.mainContent{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: min-content 1fr 1fr;
+}
+.mainSection{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+.sectionLabel{
+    font-size: 20px;
+}
+.musicLabel{
+    font-size: 4em;
+}
+.artists,
+.tracks,
+.track{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.artist,
+.trackInfo{
+    display: flex;
+    flex-flow: column;
+    padding: 10px;
+    justify-content: space-between;
+}
+.artist-img{
+    width: 7em;
+    height: 7em;
+    border-radius: 100%;
+}
+.artist-nameOfArtist,
+.track-nameOfSong{
+    font-weight: bold;
+}
+.track-img{
+    width: 4em;
+    height: 4em;
+}
+.genres{
+    font-size: 0.7em;
+    color: dimgrey;
+}
+
+
+.searchContent{
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: min-content min-content 1fr 1fr 1fr;
+}
+.searchBar {
+    display: flex;
+}
+.searchTerm {
+    border: 3px solid darkgrey;
+    border-right: none;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+}
+.searchBar-img{
+    height: 1em;
+    border: 1px solid darkgrey;
+    background: darkgrey;
+    text-align: center;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+}
+.searchSection{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+.search-artists,
+.search-albums{
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr 1fr 1fr ;
+}
+.search-square{
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    background-image: url("player_default_album.png") ;
+    background-size: contain;
+    height: 6em;
+    width: 6em;
+}
+.square-mainText{
+    font-size: 18px;
+    font-weight: bold;
+    color: ghostwhite;
+    text-shadow: 1px 1px 1px #000;
+}
+.square-secondaryText{
+    font-size: 14px;
+    font-weight: bold;
+    color: lightgrey;
+    text-shadow: 1px 1px 1px #000;
+}
+.search-track{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 3fr 2fr 2fr;
+    justify-items: center;
+    align-items: center;
+    border-bottom: 1px solid grey;
+}
+.search-track-img{
+    height: 1.5em;
+    width: 1.5em;
+}
+.search-trackName{
+    font-weight: bold;
+    font-size: 18px;
+}
+.search-artistName{
+    font-size: 15px;
+}
+.search-trackTime{
+    color: grey;
+    font-size: 12px;
+}
