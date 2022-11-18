@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#000000"/>
+    <meta
+            name="description"
+            content="Web site created using create-react-app by Ilia Petrovskii IVT41"
+    />
+    <link rel="stylesheet" href="styles.css"/>
+    <title>last.fm</title>
+</head>
+<body class="app">
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<header class="header">
+    <div class="player-bar">
+        <div class="player-bar-poster">
+            <img class="player-bar-img" src="player_default_album.png" alt="default poster">
+        </div>
+        <div><img class="player-bar-img" src="prev.png" alt="prev"></div>
+        <div><img class="player-bar-img" src="play.png" alt="play"></div>
+        <div><img class="player-bar-img" src="next.png" alt="next"></div>
+    </div>
+    <span class="header-website-name">Last.fm</span>
+    <nav class="navbar">
+        <a class="navbar-search navbar-item" href="search.html">
+            <img class="navbar-search-img" src="search.png" alt="search">
+        </a>
+        <div class="navbar-item">Live</div>
+        <div class="navbar-item">Music</div>
+        <div class="navbar-item">Charts</div>
+        <div class="navbar-item">Events</div>
+        <div class="navbar-item">Features</div>
+    </nav>
+</header>
+
+
+<main class="searchContent">
+    <h1 class="searchLabel">Search results</h1>
+    <div class="searchBar">
+        <label>
+            <input type="text" class="searchTerm" placeholder="What are you looking for?">
+        </label>
+        <img class="searchBar-img" src="search.png" alt="search">
+    </div>
+    <section class="searchSection">
+        <h2 class="sectionLabel">Artists</h2>
+        <div class="search-artists">
+            <div class="search-square">
+                <span class="square-mainText">Name1</span>
+                <span class="square-secondaryText">1598 listeners</span>
+            </div>
+            <div class="search-square">
+                <span class="square-mainText">Name2</span>
+                <span class="square-secondaryText">1598 listeners</span>
+            </div>
+            <div class="search-square">
+                <span class="square-mainText">Name3</span>
+                <span class="square-secondaryText">1598 listeners</span>
+            </div>
+            <div class="search-square">
+                <span class="square-mainText">Name4</span>
+                <span class="square-secondaryText">1598 listeners</span>
+            </div>
+            <div class="search-square">
+                <span class="square-mainText">Name5</span>
+                <span class="square-secondaryText">1598 listeners</span>
+            </div>
+            <div class="search-square">
+                <span class="square-mainText">Name6</span>
+                <span class="square-secondaryText">1598 listeners</span>
+            </div>
+            <div class="search-square">
+                <span class="square-mainText">Name7</span>
+                <span class="square-secondaryText">1598 listeners</span>
+            </div>
+            <div class="search-square">
+                <span class="square-mainText">Name8</span>
+                <span class="square-secondaryText">1598 listeners</span>
+            </div>
+        </div>
+    </section>
+    <section class="searchSection">
+        <h2 class="sectionLabel">Albums</h2>
+        <div class="search-albums">
+            <div class="search-square">
+                <span class="square-mainText">Album1</span>
+                <span class="square-secondaryText">Name1</span>
+            </div>
+            <div class="search-square">
+                <span class="square-mainText">Album2</span>
+                <span class="square-secondaryText">Name2</span>
+            </div>
+            <div class="search-square">
+                <span class="square-mainText">Album3</span>
+                <span class="square-secondaryText">Name3</span>
+            </div>
+            <div class="search-square">
+                <span class="square-mainText">Album4</span>
+                <span class="square-secondaryText">Name4</span>
+            </div>
+            <div class="search-square">
+                <span class="square-mainText">Album5</span>
+                <span class="square-secondaryText">Name5</span>
+            </div>
+            <div class="search-square">
+                <span class="square-mainText">Album6</span>
+                <span class="square-secondaryText">Name6</span>
+            </div>
+            <div class="search-square">
+                <span class="square-mainText">Album7</span>
+                <span class="square-secondaryText">Name7</span>
+            </div>
+            <div class="search-square">
+                <span class="square-mainText">Album8</span>
+                <span class="square-secondaryText">Name8</span>
+            </div>
+        </div>
+    </section>
+    <section class="searchSection">
+        <h2 class="sectionLabel">Tracks</h2>
+        <div class="search-list">
+            <div class="search-track">
+                <img class="search-track-img" src="play.png" alt="play">
+                <img class="search-track-img" src="player_default_album.png" alt="album">
+                <img class="search-track-img" src="heart.png" alt="like">
+                <span class="search-trackName">Track1</span>
+                <span class="search-artistName">Name1</span>
+                <span class="search-trackTime">1:52</span>
+            </div>
+            <div class="search-track">
+                <img class="search-track-img" src="play.png" alt="play">
+                <img class="search-track-img" src="player_default_album.png" alt="album">
+                <img class="search-track-img" src="heart.png" alt="like">
+                <span class="search-trackName">Track2</span>
+                <span class="search-artistName">Name2</span>
+                <span class="search-trackTime">1:52</span>
+            </div>
+            <div class="search-track">
+                <img class="search-track-img" src="play.png" alt="play">
+                <img class="search-track-img" src="player_default_album.png" alt="album">
+                <img class="search-track-img" src="heart.png" alt="like">
+                <span class="search-trackName">Track3</span>
+                <span class="search-artistName">Name3</span>
+                <span class="search-trackTime">1:52</span>
+            </div>
+            <div class="search-track">
+                <img class="search-track-img" src="play.png" alt="play">
+                <img class="search-track-img" src="player_default_album.png" alt="album">
+                <img class="search-track-img" src="heart.png" alt="like">
+                <span class="search-trackName">Track4</span>
+                <span class="search-artistName">Name4</span>
+                <span class="search-trackTime">1:52</span>
+            </div>
+            <div class="search-track">
+                <img class="search-track-img" src="play.png" alt="play">
+                <img class="search-track-img" src="player_default_album.png" alt="album">
+                <img class="search-track-img" src="heart.png" alt="like">
+                <span class="search-trackName">Track5</span>
+                <span class="search-artistName">Name5</span>
+                <span class="search-trackTime">1:52</span>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-top-column">
+            <h2 class="footer-heading">Company</h2>
+            <ul class="footer-links">
+                <li>About Last.fm</li>
+                <li>Contact Us</li>
+                <li>Jobs</li>
+            </ul>
+        </div>
+        <div class="footer-top-column">
+            <h2 class="footer-heading">Help</h2>
+            <ul class="footer-links">
+                <li>Track My Music</li>
+                <li>Community Support</li>
+                <li>Community Guidelines</li>
+                <li>Help</li>
+            </ul>
+        </div>
+        <div class="footer-top-column">
+            <h2 class="footer-heading">Goodies</h2>
+            <ul class="footer-links">
+                <li>Download Scrobbler</li>
+                <li>Developer API</li>
+                <li>Free Music Downloads</li>
+                <li>Merchandise</li>
+            </ul>
+        </div>
+        <div class="footer-top-column">
+            <h2 class="footer-heading">Account</h2>
+            <ul class="footer-links">
+                <li>Sign Up</li>
+                <li>Log In</li>
+                <li>Subscribe</li>
+            </ul>
+        </div>
+        <div class="footer-top-column">
+            <h2 class="footer-heading">Follow Us</h2>
+            <ul class="footer-links">
+                <li>Facebook</li>
+                <li>Twitter</li>
+                <li>Instagram</li>
+                <li>YouTube</li>
+            </ul>
+        </div>
+    </div>
+    <hr class="solid">
+    <div class="footer-bottom">
+        <div class="footer-bottom-info">
+            <div class="language-choose">
+                <div class="footer-lang"><strong>English</strong></div>
+                <div class="footer-lang">Deutsch</div>
+                <div class="footer-lang">Español</div>
+                <div class="footer-lang">Français</div>
+                <div class="footer-lang">Italiano</div>
+                <div class="footer-lang">日本語</div>
+                <div class="footer-lang">Polski</div>
+                <div class="footer-lang">Português</div>
+                <div class="footer-lang">Русский</div>
+                <div class="footer-lang">Svenska</div>
+                <div class="footer-lang">Türkçe</div>
+                <div class="footer-lang">简体中文</div>
+            </div>
+            <p class="footer-timezone">Time zone: <strong>Europe/Moscow</strong></p>
+            <div class="footer-policy">
+                <div class="footer-policy-item">CBS Interactive © 2022 Last.fm Ltd. All rights reserved</div>
+                <div class="footer-policy-item">Terms of Use</div>
+                <div class="footer-policy-item">Privacy Policy</div>
+                <div class="footer-policy-item">Legal Policies</div>
+                <div class="footer-policy-item">Cookies Policy</div>
+                <div class="footer-policy-item">Cookie Information</div>
+                <div class="footer-policy-item">Jobs at ViacomCBS</div>
+                <div class="footer-policy-item">Last.fm Music</div>
+            </div>
+        </div>
+        <p class="audioscrobbler">Audioscrobbler</p>
+    </div>
+</footer>
+</body>
+</html>
