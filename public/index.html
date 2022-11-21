@@ -10,6 +10,7 @@
             content="Web site created using create-react-app by Ilia Petrovskii IVT41"
     />
     <link rel="stylesheet" href="styles.css"/>
+    <script src="index.js" defer></script>
     <title>last.fm</title>
 </head>
 <body class="app">
@@ -23,7 +24,7 @@
         <div><img class="player-bar-img" src="play.png" alt="play"></div>
         <div><img class="player-bar-img" src="next.png" alt="next"></div>
     </div>
-    <span class="header-website-name">Last.fm</span>
+    <a class="header-website-name" href="index.html">Last.fm</a>
     <nav class="navbar">
         <a class="navbar-search navbar-item" href="search.html">
             <img class="navbar-search-img" src="search.png" alt="search">
@@ -42,52 +43,13 @@
     <section class="mainSection">
         <h2 class="sectionLabel">Hot right now</h2>
         <hr class="short">
-        <div class="artists">
-            <div class="artist">
-                <img class="artist-img" src="music.png" alt="image of artist">
-                <span class="artist-nameOfArtist">Name</span>
-                <span class="genres">Genre1, Genre2, Genre3</span>
-            </div>
-            <div class="artist">
-                <img class="artist-img" src="music.png" alt="image of artist">
-                <span class="artist-nameOfArtist">Name2</span>
-                <span class="genres">Genre1, Genre2, Genre3</span>
-            </div>
-            <div class="artist">
-                <img class="artist-img" src="music.png" alt="image of artist">
-                <span class="artist-nameOfArtist">Name3</span>
-                <span class="genres">Genre1, Genre2, Genre3</span>
-            </div>
+        <div class="artists" id="artists">
         </div>
     </section>
     <section class="mainSection">
         <h2 class="sectionLabel">Popular tracks</h2>
         <hr class="short">
-        <div class="tracks">
-            <div class="track">
-                <img class="track-img" src="music.png" alt="image of artist">
-                <div class="trackInfo">
-                    <span class="track-nameOfSong">Song name</span>
-                    <span class="track-nameOfArtist">Name</span>
-                    <span class="genres">Genre1, Genre2, Genre3</span>
-                </div>
-            </div>
-            <div class="track">
-                <img class="track-img" src="music.png" alt="image of artist">
-                <div class="trackInfo">
-                    <span class="track-nameOfSong">Song name</span>
-                    <span class="track-nameOfArtist">Name</span>
-                    <span class="genres">Genre1, Genre2, Genre3</span>
-                </div>
-            </div>
-            <div class="track">
-                <img class="track-img" src="music.png" alt="image of artist">
-                <div class="trackInfo">
-                    <span class="track-nameOfSong">Song name</span>
-                    <span class="track-nameOfArtist">Name</span>
-                    <span class="genres">Genre1, Genre2, Genre3</span>
-                </div>
-            </div>
+        <div class="tracks" id="tracks">
         </div>
     </section>
 </main>

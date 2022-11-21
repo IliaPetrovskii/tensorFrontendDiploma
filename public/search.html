@@ -10,6 +10,7 @@
             content="Web site created using create-react-app by Ilia Petrovskii IVT41"
     />
     <link rel="stylesheet" href="styles.css"/>
+    <script src="search.js" defer></script>
     <title>last.fm</title>
 </head>
 <body class="app">
@@ -23,7 +24,7 @@
         <div><img class="player-bar-img" src="play.png" alt="play"></div>
         <div><img class="player-bar-img" src="next.png" alt="next"></div>
     </div>
-    <span class="header-website-name">Last.fm</span>
+    <a class="header-website-name" href="index.html">Last.fm</a>
     <nav class="navbar">
         <a class="navbar-search navbar-item" href="search.html">
             <img class="navbar-search-img" src="search.png" alt="search">
@@ -38,130 +39,26 @@
 
 
 <main class="searchContent">
-    <h1 class="searchLabel">Search results</h1>
-    <div class="searchBar">
-        <label>
-            <input type="text" class="searchTerm" placeholder="What are you looking for?">
-        </label>
-        <img class="searchBar-img" src="search.png" alt="search">
+    <h1 class="searchLabel" id="searchLabel">Search results</h1>
+    <div>
+            <form method="get" action="search.html" class="searchBar">
+                <input id="searchBar" name='request' type="search" class="searchTerm" placeholder="What are you looking for?" value=''>
+                <button type="submit" class="searchButton"><img src="search.png" class="searchBar-img" alt="search"></button>
+            </form>
     </div>
     <section class="searchSection">
         <h2 class="sectionLabel">Artists</h2>
-        <div class="search-artists">
-            <div class="search-square">
-                <span class="square-mainText">Name1</span>
-                <span class="square-secondaryText">1598 listeners</span>
-            </div>
-            <div class="search-square">
-                <span class="square-mainText">Name2</span>
-                <span class="square-secondaryText">1598 listeners</span>
-            </div>
-            <div class="search-square">
-                <span class="square-mainText">Name3</span>
-                <span class="square-secondaryText">1598 listeners</span>
-            </div>
-            <div class="search-square">
-                <span class="square-mainText">Name4</span>
-                <span class="square-secondaryText">1598 listeners</span>
-            </div>
-            <div class="search-square">
-                <span class="square-mainText">Name5</span>
-                <span class="square-secondaryText">1598 listeners</span>
-            </div>
-            <div class="search-square">
-                <span class="square-mainText">Name6</span>
-                <span class="square-secondaryText">1598 listeners</span>
-            </div>
-            <div class="search-square">
-                <span class="square-mainText">Name7</span>
-                <span class="square-secondaryText">1598 listeners</span>
-            </div>
-            <div class="search-square">
-                <span class="square-mainText">Name8</span>
-                <span class="square-secondaryText">1598 listeners</span>
-            </div>
+        <div id="search-artists" class="search-artists">
         </div>
     </section>
     <section class="searchSection">
         <h2 class="sectionLabel">Albums</h2>
-        <div class="search-albums">
-            <div class="search-square">
-                <span class="square-mainText">Album1</span>
-                <span class="square-secondaryText">Name1</span>
-            </div>
-            <div class="search-square">
-                <span class="square-mainText">Album2</span>
-                <span class="square-secondaryText">Name2</span>
-            </div>
-            <div class="search-square">
-                <span class="square-mainText">Album3</span>
-                <span class="square-secondaryText">Name3</span>
-            </div>
-            <div class="search-square">
-                <span class="square-mainText">Album4</span>
-                <span class="square-secondaryText">Name4</span>
-            </div>
-            <div class="search-square">
-                <span class="square-mainText">Album5</span>
-                <span class="square-secondaryText">Name5</span>
-            </div>
-            <div class="search-square">
-                <span class="square-mainText">Album6</span>
-                <span class="square-secondaryText">Name6</span>
-            </div>
-            <div class="search-square">
-                <span class="square-mainText">Album7</span>
-                <span class="square-secondaryText">Name7</span>
-            </div>
-            <div class="search-square">
-                <span class="square-mainText">Album8</span>
-                <span class="square-secondaryText">Name8</span>
-            </div>
+        <div class="search-albums" id="search-albums">
         </div>
     </section>
     <section class="searchSection">
         <h2 class="sectionLabel">Tracks</h2>
-        <div class="search-list">
-            <div class="search-track">
-                <img class="search-track-img" src="play.png" alt="play">
-                <img class="search-track-img" src="player_default_album.png" alt="album">
-                <img class="search-track-img" src="heart.png" alt="like">
-                <span class="search-trackName">Track1</span>
-                <span class="search-artistName">Name1</span>
-                <span class="search-trackTime">1:52</span>
-            </div>
-            <div class="search-track">
-                <img class="search-track-img" src="play.png" alt="play">
-                <img class="search-track-img" src="player_default_album.png" alt="album">
-                <img class="search-track-img" src="heart.png" alt="like">
-                <span class="search-trackName">Track2</span>
-                <span class="search-artistName">Name2</span>
-                <span class="search-trackTime">1:52</span>
-            </div>
-            <div class="search-track">
-                <img class="search-track-img" src="play.png" alt="play">
-                <img class="search-track-img" src="player_default_album.png" alt="album">
-                <img class="search-track-img" src="heart.png" alt="like">
-                <span class="search-trackName">Track3</span>
-                <span class="search-artistName">Name3</span>
-                <span class="search-trackTime">1:52</span>
-            </div>
-            <div class="search-track">
-                <img class="search-track-img" src="play.png" alt="play">
-                <img class="search-track-img" src="player_default_album.png" alt="album">
-                <img class="search-track-img" src="heart.png" alt="like">
-                <span class="search-trackName">Track4</span>
-                <span class="search-artistName">Name4</span>
-                <span class="search-trackTime">1:52</span>
-            </div>
-            <div class="search-track">
-                <img class="search-track-img" src="play.png" alt="play">
-                <img class="search-track-img" src="player_default_album.png" alt="album">
-                <img class="search-track-img" src="heart.png" alt="like">
-                <span class="search-trackName">Track5</span>
-                <span class="search-artistName">Name5</span>
-                <span class="search-trackTime">1:52</span>
-            </div>
+        <div class="search-list" id="search-list">
         </div>
     </section>
 </main>
