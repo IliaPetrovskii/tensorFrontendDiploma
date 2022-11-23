@@ -6,18 +6,18 @@
  * @returns результат поиска авторов музыки
  */
 function addTopArtist(name, tags, image) {
-    let div = document.getElementById("artists");
-    let artist = document.createElement("div");
+    const div = document.getElementById("artists");
+    const artist = document.createElement("div");
     artist.classList.add("artist");
-    let img = document.createElement("img");
+    const img = document.createElement("img");
     img.classList.add("artist-img");
     img.src = image;
     artist.append(img);
-    let nameOfArtist = document.createElement("span");
+    const nameOfArtist = document.createElement("span");
     nameOfArtist.classList.add("artist-nameOfArtist")
     nameOfArtist.innerText = name;
     artist.append(nameOfArtist);
-    let genres = document.createElement("span");
+    const genres = document.createElement("span");
     genres.classList.add("genres")
     genres.innerText = tags;
     artist.append(genres);
@@ -30,14 +30,14 @@ function addTopArtist(name, tags, image) {
  */
 async function searchTopArtists() {
     try {
-        let response = await fetch("https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=7d42f21017e5fd6eb4e9e85c95ccd20f&limit=14&format=json");
+        const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${apiKey}&limit=14&format=json`);
         if (response.status === 200) {
-            return await response.json();
+            return response.json();
         } else {
-            throw new Error("Artists not received. Status: " + response.status);
+            throw new Error("Top artists not received. Status: " + response.status);
         }
     } catch (err) {
-        console.error(err);
+        alert(err);
     }
 }
 
@@ -48,14 +48,14 @@ async function searchTopArtists() {
  */
 async function searchTagsOfArtist(text) {
     try {
-        let response = await fetch("https://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&api_key=7d42f21017e5fd6eb4e9e85c95ccd20f&format=json&artist=" + text);
+        const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&api_key=${apiKey}&format=json&artist=${text}`);
         if (response.status === 200) {
-            return await response.json();
+            return response.json();
         } else {
-            throw new Error("Artists not received. Status: " + response.status);
+            throw new Error("Tags of artist not received. Status: " + response.status);
         }
     } catch (err) {
-        console.error(err);
+        alert(err);
     }
 }
 
@@ -68,24 +68,24 @@ async function searchTagsOfArtist(text) {
  * @returns результат поиска авторов музыки
  */
 function addTopTrack(song, artist, tags, image) {
-    let div = document.getElementById("tracks");
-    let track = document.createElement("div");
+    const div = document.getElementById("tracks");
+    const track = document.createElement("div");
     track.classList.add("track");
-    let img = document.createElement("img");
+    const img = document.createElement("img");
     img.classList.add("track-img");
     img.src = image;
     track.append(img);
-    let trackInfo = document.createElement("div");
+    const trackInfo = document.createElement("div");
     trackInfo.classList.add("trackInfo");
-    let songText = document.createElement("span");
+    const songText = document.createElement("span");
     songText.classList.add("track-nameOfSong");
     songText.innerText = song;
     trackInfo.append(songText);
-    let artistText = document.createElement("span");
+    const artistText = document.createElement("span");
     artistText.classList.add("track-nameOfArtist");
     artistText.innerText = artist;
     trackInfo.append(artistText);
-    let tagsText = document.createElement("span");
+    const tagsText = document.createElement("span");
     tagsText.classList.add("genres");
     tagsText.innerText = tags;
     trackInfo.append(tagsText);
@@ -99,14 +99,14 @@ function addTopTrack(song, artist, tags, image) {
  */
 async function searchPopularTracks() {
     try {
-        let response = await fetch("https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=7d42f21017e5fd6eb4e9e85c95ccd20f&format=json&limit=15");
+        const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${apiKey}&format=json&limit=15`);
         if (response.status === 200) {
-            return await response.json();
+            return response.json();
         } else {
-            throw new Error("Artists not received. Status: " + response.status);
+            throw new Error("Popular tracks not received. Status: " + response.status);
         }
     } catch (err) {
-        console.error(err);
+        alert(err);
     }
 }
 
@@ -118,15 +118,14 @@ async function searchPopularTracks() {
  */
 async function searchTagsOfTrack(song, artist) {
     try {
-        let response = await fetch("https://ws.audioscrobbler.com/2.0/?method=track.gettoptags&api_key=7d42f21017e5fd6eb4e9e85c95ccd20f&format=json&artist="
-            + artist + "&track=" + song);
+        const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=track.gettoptags&api_key=${apiKey}&format=json&artist=${artist}&track=${song}`);
         if (response.status === 200) {
-            return await response.json();
+            return response.json();
         } else {
-            throw new Error("Artists not received. Status: " + response.status);
+            throw new Error("Tags of track not received. Status: " + response.status);
         }
     } catch (err) {
-        console.error(err);
+        alert(err);
     }
 }
 
@@ -134,18 +133,20 @@ async function searchTagsOfTrack(song, artist) {
  * Поиск и отображение известных авторов
  */
 async function findTopArtists() {
-    let artistsSearch = await searchTopArtists();
-    for (let i = 0; i < artistsSearch["artists"]["artist"].length; i++) {
-        let name = artistsSearch["artists"]["artist"][i]["name"];
-        let image = artistsSearch["artists"]["artist"][i]["image"][2]["#text"];
-        let tagsReq = await searchTagsOfArtist(name);
-        let length = tagsReq["toptags"]["tag"].length;
+    const artistsSearch = await searchTopArtists();
+    const artist = artistsSearch.artists.artist;
+    for (let i = 0; i < artist.length; i++) {
+        const name = artist[i].name;
+        const image = artist[i].image[2]["#text"];
+        const tagsReq = await searchTagsOfArtist(name);
+        const tags = tagsReq.toptags.tag;
+        let length = tags.length;
         if (length > 3) length = 3;
-        let tags = [];
+        const tagsArray = [];
         for (let j = 0; j < length; j++) {
-            tags.push(tagsReq["toptags"]["tag"][j]["name"]);
+            tagsArray.push(tags[j].name);
         }
-        addTopArtist(name, tags.toString().replace(new RegExp(",", 'g'), " · "), image);
+        addTopArtist(name, tagsArray.join(" · "), image);
     }
 }
 
@@ -153,21 +154,24 @@ async function findTopArtists() {
  * Поиск и отображение наиболее популярных треков
  */
 async function findTopTracks() {
-    let tracksSearch = await searchPopularTracks();
-    for (let i = 0; i < tracksSearch["tracks"]["track"].length; i++) {
-        let song = tracksSearch["tracks"]["track"][i]["name"];
-        let artist = tracksSearch["tracks"]["track"][i]["artist"]["name"];
-        let image = tracksSearch["tracks"]["track"][i]["image"][2]["#text"];
-        let tagsReq = await searchTagsOfTrack(song, artist);
-        let length = tagsReq["toptags"]["tag"].length;
+    const tracksSearch = await searchPopularTracks();
+    const tracks = tracksSearch.tracks.track;
+    for (let i = 0; i < tracks.length; i++) {
+        const song = tracks[i].name;
+        const artist = tracks[i].artist.name;
+        const image = tracks[i].image[2]["#text"];
+        const tagsReq = await searchTagsOfTrack(song, artist);
+        const tags = tagsReq.toptags.tag;
+        let length = tags.length;
         if (length > 3) length = 3;
-        let tags = [];
+        const tagsArray = [];
         for (let j = 0; j < length; j++) {
-            tags.push(tagsReq["toptags"]["tag"][j]["name"]);
+            tagsArray.push(tags[j].name);
         }
-        addTopTrack(song, artist, tags.toString().replace(new RegExp(",", 'g'), " · "), image);
+        addTopTrack(song, artist, tagsArray.join(" · "), image);
     }
 }
 
+const apiKey = "7d42f21017e5fd6eb4e9e85c95ccd20f";
 findTopArtists()
 findTopTracks()
