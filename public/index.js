@@ -25,41 +25,6 @@ function addTopArtist(name, tags, image) {
 }
 
 /**
- * Поиск известных авторов музыки
- * @returns результат поиска авторов музыки
- */
-async function searchTopArtists() {
-    try {
-        const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${apiKey}&limit=14&format=json`);
-        if (response.status === 200) {
-            return response.json();
-        } else {
-            throw new Error("Top artists not received. Status: " + response.status);
-        }
-    } catch (err) {
-        alert(err);
-    }
-}
-
-/**
- * Поиск жанров характерных для автора
- * @param text - строка для поиска жанров
- * @returns результат поиска жанров
- */
-async function searchTagsOfArtist(text) {
-    try {
-        const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&api_key=${apiKey}&format=json&artist=${text}`);
-        if (response.status === 200) {
-            return response.json();
-        } else {
-            throw new Error("Tags of artist not received. Status: " + response.status);
-        }
-    } catch (err) {
-        alert(err);
-    }
-}
-
-/**
  * Добавление автора в раздел "Popular tracks"
  * @param song - название трека
  * @param artist - автор
@@ -94,35 +59,17 @@ function addTopTrack(song, artist, tags, image) {
 }
 
 /**
- * Поиск популярных треков музыки
- * @returns результат поиска треков
+ * Поиск данных
+ * @param req - строка по которой будет обращение
+ * @returns результат поиска данных
  */
-async function searchPopularTracks() {
+async function searchReq(req) {
     try {
-        const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${apiKey}&format=json&limit=15`);
+        const response = await fetch(req);
         if (response.status === 200) {
             return response.json();
         } else {
-            throw new Error("Popular tracks not received. Status: " + response.status);
-        }
-    } catch (err) {
-        alert(err);
-    }
-}
-
-/**
- * Поиск жанров трека
- * @param song - название трека
- * @param artist - автор
- * @returns результат поиска жанров
- */
-async function searchTagsOfTrack(song, artist) {
-    try {
-        const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=track.gettoptags&api_key=${apiKey}&format=json&artist=${artist}&track=${song}`);
-        if (response.status === 200) {
-            return response.json();
-        } else {
-            throw new Error("Tags of track not received. Status: " + response.status);
+            throw new Error("Search error. Status: " + response.status);
         }
     } catch (err) {
         alert(err);
@@ -133,12 +80,12 @@ async function searchTagsOfTrack(song, artist) {
  * Поиск и отображение известных авторов
  */
 async function findTopArtists() {
-    const artistsSearch = await searchTopArtists();
+    const artistsSearch = await searchReq(`https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${apiKey}&limit=14&format=json`);
     const artist = artistsSearch.artists.artist;
     for (let i = 0; i < artist.length; i++) {
         const name = artist[i].name;
         const image = artist[i].image[2]["#text"];
-        const tagsReq = await searchTagsOfArtist(name);
+        const tagsReq = await searchReq(`https://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&api_key=${apiKey}&format=json&artist=${name}`);
         const tags = tagsReq.toptags.tag;
         let length = tags.length;
         if (length > 3) length = 3;
@@ -154,13 +101,13 @@ async function findTopArtists() {
  * Поиск и отображение наиболее популярных треков
  */
 async function findTopTracks() {
-    const tracksSearch = await searchPopularTracks();
+    const tracksSearch = await searchReq(`https://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${apiKey}&format=json&limit=15`);
     const tracks = tracksSearch.tracks.track;
     for (let i = 0; i < tracks.length; i++) {
         const song = tracks[i].name;
         const artist = tracks[i].artist.name;
         const image = tracks[i].image[2]["#text"];
-        const tagsReq = await searchTagsOfTrack(song, artist);
+        const tagsReq = await searchReq(`https://ws.audioscrobbler.com/2.0/?method=track.gettoptags&api_key=${apiKey}&format=json&artist=${artist}&track=${song}`);
         const tags = tagsReq.toptags.tag;
         let length = tags.length;
         if (length > 3) length = 3;

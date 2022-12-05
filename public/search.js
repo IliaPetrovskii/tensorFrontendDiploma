@@ -1,22 +1,4 @@
 /**
- * Поиск авторов музыки
- * @param text - строка для поиска
- * @returns результат поиска авторов музыки
- */
-async function searchArtists(text) {
-    try {
-        const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=artist.search&api_key=${apiKey}&format=json&limit=8&artist=${text}`);
-        if (response.status === 200) {
-            return response.json();
-        } else {
-            throw new Error("Artists not received. Status: " + response.status);
-        }
-    } catch (err) {
-        alert(err);
-    }
-}
-
-/**
  * Добавление автора музыки в раздел "Artists"
  * @param name - автор
  * @param listeners - количество слушателей
@@ -42,24 +24,6 @@ function addArtist(name, listeners, image) {
     searchSquare.append(img);
     searchSquare.append(text);
     div.append(searchSquare);
-}
-
-/**
- * Поиск альбомов
- * @param text - строка для поиска
- * @returns результат поиска альбомов
- */
-async function searchAlbums(text) {
-    try {
-        const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=album.search&api_key=${apiKey}&format=json&limit=8&album=${text}`);
-        if (response.status === 200) {
-            return response.json();
-        } else {
-            throw new Error("Albums not received. Status: " + response.status);
-        }
-    } catch (err) {
-        alert(err);
-    }
 }
 
 /**
@@ -91,23 +55,6 @@ function addAlbum(album, name, image) {
 }
 
 /**
- * @returns результат поиска трека
- * @param text - текст для поиска
- */
-async function searchTracks(text) {
-    try {
-        const response = await fetch(`https://ws.audioscrobbler.com/2.0/?method=track.search&api_key=${apiKey}&format=json&limit=10&track=${text}`);
-        if (response.status === 200) {
-            return response.json();
-        } else {
-            throw new Error("Tracks not received. Status: " + response.status);
-        }
-    } catch (err) {
-        alert(err);
-    }
-}
-
-/**
  * Добавление трека в раздел "Tracks"
  * @param name - название
  * @param artist - автор
@@ -133,11 +80,29 @@ function addTrack(name, artist, image) {
 }
 
 /**
+ * Поиск данных
+ * @param req - строка по которой будет обращение
+ * @returns результат поиска данных
+ */
+async function searchReq(req) {
+    try {
+        const response = await fetch(req);
+        if (response.status === 200) {
+            return response.json();
+        } else {
+            throw new Error("Search error. Status: " + response.status);
+        }
+    } catch (err) {
+        alert(err);
+    }
+}
+
+/**
  * Поиск и отображение авторов по запросу
  */
 async function findArtists(text) {
-    const artistsSearch = await searchArtists(text);
-    const artist = artistsSearch["results"]["artistmatches"]["artist"];
+    const artistsSearch = await searchReq(`https://ws.audioscrobbler.com/2.0/?method=artist.search&api_key=${apiKey}&format=json&limit=8&artist=${text}`);
+    const artist = artistsSearch.results.artistmatches.artist;
     for (let i = 0; i < artist.length; i++) {
         addArtist(artist[i].name, artist[i].listeners, artist[i].image[2]["#text"]);
     }
@@ -147,8 +112,8 @@ async function findArtists(text) {
  * Поиск и отображение альбомов по запросу
  */
 async function findAlbums(text) {
-    const albumsSearch = await searchAlbums(text);
-    const album = albumsSearch["results"]["albummatches"]["album"];
+    const albumsSearch = await searchReq(`https://ws.audioscrobbler.com/2.0/?method=album.search&api_key=${apiKey}&format=json&limit=8&album=${text}`);
+    const album = albumsSearch.results.albummatches.album;
     for (let i = 0; i < album.length; i++) {
         addAlbum(album[i].name, album[i].artist, album[i].image[2]["#text"]);
     }
@@ -158,8 +123,8 @@ async function findAlbums(text) {
  * Поиск и отображение треков по запросу
  */
 async function findTracks(text) {
-    const trackSearch = await searchTracks(text);
-    const track = trackSearch["results"]["trackmatches"]["track"];
+    const trackSearch = await searchReq(`https://ws.audioscrobbler.com/2.0/?method=track.search&api_key=${apiKey}&format=json&limit=10&track=${text}`);
+    const track = trackSearch.results.trackmatches.track;
     for (let i = 0; i < track.length; i++) {
         addTrack(track[i].name, track[i].artist, track[i].image[2]["#text"]);
     }
