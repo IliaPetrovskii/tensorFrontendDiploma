@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-.app {
+#root {
     display: grid;
     grid-template-rows: min-content 1fr min-content;
     min-height: 100vh;
@@ -15,6 +15,7 @@
     border: 0;
     border-top: 1px solid #CCC;
 }
+
 .short {
     margin: 5px 0;
     border: 1px solid crimson;
@@ -30,6 +31,7 @@
 .header {
     height: min-content;
 }
+
 .header,
 .player-bar,
 .navbar,
@@ -39,17 +41,21 @@
     justify-content: space-between;
     align-items: center;
 }
-.navbar-item{
+
+.navbar-item {
     font-size: 16px;
-    padding: 0 0 0 20px ;
+    padding: 0 0 0 20px;
 }
-.player-bar-img{
+
+.player-bar-img {
     height: 2em;
 }
-.navbar-search-img{
+
+.navbar-search-img {
     height: 1em;
 }
-.header-website-name{
+
+.header-website-name {
     font-size: 30px;
     color: darkred;
     font-style: oblique;
@@ -61,81 +67,115 @@
     justify-content: space-between;
     height: min-content;
 }
+
 .footer-top,
 .footer-bottom,
 .language-choose,
-.footer-policy{
+.footer-policy {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
     align-items: flex-start;
 }
+
 .footer-lang,
 .footer-timezone,
-.footer-policy-item{
+.footer-policy-item {
     padding: 2px 8px;
     font-size: 12px;
 }
 
-.mainContent{
+.mainContent {
     display: grid;
     justify-items: center;
     align-items: center;
     grid-template-rows: min-content 1fr 1fr;
 }
-.mainSection{
+
+.mainSection {
     display: flex;
     flex-flow: column;
     align-items: center;
 }
-.sectionLabel{
+
+.sectionLabel {
     font-size: 20px;
 }
-.musicLabel{
+
+.musicLabel {
     font-size: 4em;
 }
-.artists,
-.tracks,
-.track{
+
+.artists {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
+    width: 75%;
 }
-.artist,
-.trackInfo{
+
+.track {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    width: max-content;
+}
+
+.tracks {
+    display: grid;
+    place-content: center;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.artist {
     display: flex;
     flex-flow: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 12em;
+    height: 12em;
+}
+
+.trackInfo {
+    display: flex;
+    flex-flow: column wrap;
     padding: 10px;
     justify-content: space-between;
 }
-.artist-img{
+
+.artist-img {
     width: 7em;
     height: 7em;
     border-radius: 100%;
 }
+
 .artist-nameOfArtist,
-.track-nameOfSong{
+.track-nameOfSong {
     font-weight: bold;
 }
-.track-img{
+
+.track-img {
     width: 4em;
     height: 4em;
 }
-.genres{
+
+.genres {
     font-size: 0.7em;
     color: dimgrey;
 }
 
 
-.searchContent{
+.searchContent {
     display: grid;
     justify-items: center;
     align-items: center;
     grid-template-rows: min-content min-content 1fr 1fr 1fr;
 }
+
 .searchBar {
     display: flex;
 }
+
 .searchTerm {
     border: 3px solid darkgrey;
     border-right: none;
@@ -145,65 +185,102 @@
     outline: none;
     color: #9DBFAF;
 }
-.searchBar-img{
+
+.searchBar-img {
     height: 1em;
     border: 1px solid darkgrey;
     background: darkgrey;
     text-align: center;
-    border-radius: 0 5px 5px 0;
-    cursor: pointer;
     font-size: 20px;
 }
-.searchSection{
+
+.searchSection {
     display: flex;
     flex-flow: column;
     align-items: center;
 }
-.search-artists,
-.search-albums{
-    display: grid;
-    grid-template: 1fr 1fr / 1fr 1fr 1fr 1fr ;
+
+.searchButton {
+    border: 0;
+    text-align: center;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
 }
-.search-square{
+
+.search-label{
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.search-artists,
+.search-albums {
+    display: grid;
+    grid-template: 1fr 1fr / 1fr 1fr 1fr 1fr;
+}
+
+.square-text {
+    position: absolute;
+    width: 8em;
+    height: 8em;
     display: flex;
     flex-flow: column;
     justify-content: flex-end;
-    background-image: url("player_default_album.png") ;
-    background-size: contain;
-    height: 6em;
-    width: 6em;
+    align-items: center;
 }
-.square-mainText{
+
+.square-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.search-square {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 8em;
+    height: 8em;
+}
+
+.square-mainText {
     font-size: 18px;
     font-weight: bold;
     color: ghostwhite;
     text-shadow: 1px 1px 1px #000;
 }
-.square-secondaryText{
+
+.square-secondaryText {
     font-size: 14px;
     font-weight: bold;
     color: lightgrey;
     text-shadow: 1px 1px 1px #000;
 }
-.search-track{
+
+.search-track {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 3fr 2fr 2fr;
+    grid-template-columns: 2fr 3fr 2fr;
     justify-items: center;
     align-items: center;
     border-bottom: 1px solid grey;
 }
-.search-track-img{
-    height: 1.5em;
-    width: 1.5em;
+
+.search-track-img {
+    height: 3em;
+    width: 3em;
 }
-.search-trackName{
+
+.search-trackName {
     font-weight: bold;
     font-size: 18px;
 }
-.search-artistName{
+
+.search-artistName {
     font-size: 15px;
 }
-.search-trackTime{
+
+.search-trackTime {
     color: grey;
     font-size: 12px;
 }
